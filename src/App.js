@@ -6,6 +6,8 @@ import UserInfo from './components/content/userInfo';
 import Posts from './components/content/posts';
 import Todo from './components/content/todo';
 import Albums from './components/content/albums';
+import Album from './components/content/album';
+import MainContent from './components/content/maincontent';
 import Post from './components/content/post';
 import RightSideBar from './components/rightSidebar';
 import { Route } from "react-router-dom";
@@ -14,18 +16,20 @@ class Dashboard extends Component {
   state = { 
     users: [],
     posts: [],
-    albums: [],
+    allAlbums: [],
+    userAlbums: [],
     comments: [],
+    singlePost: [],
+    singlePostComments: [],
     todos: [],
     photos: [],
     user: [],
-    userPosts: []
+    userPosts: [],
+    fiterMember: [],
    }
 
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(users => this.setState({ users }))
+    
 
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
@@ -37,7 +41,7 @@ class Dashboard extends Component {
 
     fetch('https://jsonplaceholder.typicode.com/albums')
     .then(response => response.json())
-    .then(albums => this.setState({ albums }))
+    .then(allAlbums => this.setState({ allAlbums }))
 
     fetch('https://jsonplaceholder.typicode.com/photos')
     .then(response => response.json())
@@ -46,13 +50,40 @@ class Dashboard extends Component {
     fetch('https://jsonplaceholder.typicode.com/todos')
     .then(response => response.json())
     .then(todos => this.setState({ todos }))
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({ users }))
   }
 
   handleUser = user => {
     const userInfo = this.state.users.filter(i => i.id == user.id);
     const userPosts = this.state.posts.filter(i => i.userId == user.id);
-    this.setState({ user: userInfo, userPosts })
+    const userAlbums = this.state.allAlbums.filter(i => i.userId == user.id);
+    this.setState({ user: userInfo, userPosts, userAlbums })
   }
+
+  handleSinglePost = post => {
+    const singlePost = this.state.userPosts.filter(p => p.id == post.id);
+    const comments = this.state.comments.filter(c => c.postId == post.id);
+    this.setState({ singlePost, singlePostComments: comments })
+  }
+  searchMemeber = e => {
+    console.log(e.target.value )
+  }
+
+  // searchMemeber = e => {
+  //   this.setState({
+  //     fiterMember: e.target.value
+  //   }, () => {
+  //     if (this.state.fiterMember && this.state.fiterMember.length > 1) {
+  //       if (this.state.fiterMember.length % 2 === 0) {
+  //         this.getInfo()
+  //       }
+  //     } else if (!this.state.fiterMember) {
+  //     }
+  //   })
+  // }
 
   render() { 
     return ( 
@@ -61,12 +92,14 @@ class Dashboard extends Component {
        <div className='content'>
           <div className='profile-wrap'>
             <LeftSideBar user={this.state.user}/>
-            <Route exact path={"/userinfo"} component={() => <UserInfo user={this.state.user}/>}/>
-            <Route path={"/posts"} component={() => <Posts posts={this.state.userPosts}/>}/>
+            <Route exact path={"/"} component={() => <MainContent/>}/>
+            <Route path={"/userinfo"} component={() => <UserInfo user={this.state.user}/>}/>
+            <Route path={"/posts"} component={() => <Posts posts={this.state.userPosts} handleSinglePost={this.handleSinglePost}/>}/>
             <Route path={"/todos"} component={() => <Todo/>}/>
-            <Route path={"/albums"} component={() => <Albums/>}/>
-            <Route path={"/post"} component={() => <Post/>}/>
-            <RightSideBar users={this.state.users} handleUsers={this.handleUser}/>
+            <Route path={"/albums"} component={() => <Albums albums={this.state.userAlbums}/>}/>
+            <Route path={"/album"} component={() => <Album/>}/>
+            <Route path={"/post"} component={() => <Post post={this.state.singlePost} comments={this.state.singlePostComments}/>}/>
+            <RightSideBar users={this.state.users} handleUsers={this.handleUser} searchMemeber={this.searchMemeber}/>
           </div>
        </div>
     </div>

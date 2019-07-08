@@ -12,8 +12,8 @@ class Posts extends Component {
                     <h3 className="font-weight-bold mb-3">Your Posts</h3>
                     <ul className="list-group list-group-flush">
                         {this.props.posts.map( post => 
-                            <Link to="/post">
-                                <li className="list-group-item p-5">
+                            <Link to="/post" key={post.id}>
+                                <li className="list-group-item p-5" onClick={() => this.props.handleSinglePost(post)}>
                                     <h4>{post.title}</h4> 
                                     <p>{post.body}</p> 
                                 </li>

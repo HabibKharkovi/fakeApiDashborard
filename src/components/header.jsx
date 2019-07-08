@@ -10,7 +10,7 @@ class Header extends Component {
                     <div className="row align-items-center">
                         <div className="col-lg-4 col-6">
                             <div className="logo">
-                                <Link href="./index.html">
+                                <Link to='/'>
                                     <h2>Dashboard</h2>
                                 </Link>
                             </div>
@@ -18,7 +18,7 @@ class Header extends Component {
                         <div className="col-lg-8 col-6">
                             <div className="account-btns text-right">
                                 <span className="btn-search"><i className="fa fa-search" aria-hidden="true"></i></span>
-                                <Link href="#" className="btn acount-btn">My Account</Link>
+                                <Link to='/' className="btn acount-btn">My Account</Link>
                             </div>
                         </div>
                     </div>

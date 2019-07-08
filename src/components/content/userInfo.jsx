@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import './userInfo.css'
 
 
@@ -20,7 +19,7 @@ class UserInfo extends Component {
                                     </span>
                                 </div>
                                 {this.props.user.map(user => 
-                                    <div className="bio">
+                                    <div className="bio" key={user.id}>
                                         <a href="#" className="profile-name">{user.name}</a>
                                         <span className="">{user.email}</span>
                                     </div>
@@ -52,14 +51,14 @@ class UserInfo extends Component {
                             </div>
                             <div className='userInfo'>
                                {this.props.user.map(user => 
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Name: </span><span>{user.name}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Username: </span><span>{user.username}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Phone Number: </span><span>{user.phone}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Email: </span><span>{user.email}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Website: </span><span>{user.website}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Company: </span><span>{`${user.company.name} ${user.company.catchPhrase} `}</span></li>
-                                    <li class="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Address: </span><span>{`${user.address.street} ${user.address.suite} ${user.address.city} ${user.address.zipcode}`}</span></li>
+                                <ul className="list-group list-group-flush" key={user.id}>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Name: </span><span>{user.name}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Username: </span><span>{user.username}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Phone Number: </span><span>{user.phone}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Email: </span><span>{user.email}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Website: </span><span>{user.website}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Company: </span><span>{`${user.company.name} ${user.company.catchPhrase} `}</span></li>
+                                    <li className="list-group-item"><span className="font-weight-bold w-25 d-inline-block">Address: </span><span>{`${user.address.street} ${user.address.suite} ${user.address.city} ${user.address.zipcode}`}</span></li>
                                 </ul>
                                 )}
                             </div>

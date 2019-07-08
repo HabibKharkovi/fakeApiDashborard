@@ -19,8 +19,8 @@ class LeftSideBar extends Component {
                         </span>
                     </div>
                     {this.props.user.map(info => 
-                        <div className="bio">
-                            <a href="#" className="profile-name">{info.name}</a>
+                        <div className="bio" key={info.id}>
+                            <span className="profile-name">{info.name}</span>
                             <span className="status">{info.email}</span>
                         </div>
                     )}
