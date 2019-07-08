@@ -1,0 +1,10 @@
+.posts .list-group-item h4 {
+    color: #000;
+}
+.posts .list-group-item p {
+    color: #898989;
+}
+
+.posts a:hover {
+    text-decoration: none;
+}

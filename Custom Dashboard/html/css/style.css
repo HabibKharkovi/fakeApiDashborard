@@ -1,0 +1,1160 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+h1 {
+	font-size: 46px;
+	font-weight: 700;
+	margin-bottom: 30px;
+	font-family: 'Oswald', sans-serif;
+}
+h2 {
+	font-size: 36px;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 30px;
+}
+h3 {
+    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+h4 {
+	font-size: 22px;
+	color: #606060;
+	font-family: 'Oswald', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+a {
+    transition: 0.5s all ease;
+    color: #df3564;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.container {
+    max-width: 1030px;
+    margin: 0 auto;
+}
+.clear {
+    clear: both;
+}
+.btn {
+    display: inline-block;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase
+}
+.btn:focus {
+	box-shadow: none;
+	outline: none;
+}
+.btn-danger {
+	padding: 11px 40px;
+	line-height: 1.2;
+	background-color: #df3564;
+    border: 2px solid #df3564;
+    border-radius: 0;
+}
+.btn-danger:hover {
+	background: transparent;
+	color: #212529;
+}
+.btn-warning {
+	padding: 11px 40px;
+	line-height: 1.2;
+	background: #cc6303;
+    border: 2px solid #cc6303;
+    border-radius: 0;
+}
+.btn-warning:hover {
+	background: transparent;
+}
+/* Body CSS End */
+
+/*--- Header CSS Start ---*/
+.header {
+    padding: 15px 0;
+    transition: 0.5s all ease;
+    -webkit-box-shadow: 0px 1px 7px -1px rgba(0,0,0,0.30);
+    -moz-box-shadow: 0px 1px 7px -1px rgba(0,0,0,0.30);
+    box-shadow: 0px 1px 7px -1px rgba(0,0,0,0.30);
+    position: relative;
+    z-index: 100;
+    background: #fff;
+}
+.header-fixed {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    padding: 10px 0;
+    transition: 0.5s all ease;
+}
+.header > .container {
+    max-width: 1700px;
+}
+.account-btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.account-btns .acount-btn {
+    margin-left: 10px;
+    width: 130px;
+    height: 38px;
+    line-height: 34px;
+    font-size: 14px;
+    vertical-align: middle;
+    -webkit-border-radius: 38px;
+    -moz-border-radius: 38px;
+    border-radius: 38px;
+    background: #df3564;
+    color: #fff;
+}
+.btn-search {
+    display: inline-block;
+    margin-right: 20px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+.btn-search .fa {
+    font-size: 22px;
+    color: #898989;
+    transform: rotate(90deg);
+}
+
+.header-menu {
+    position: relative;
+}
+.header-menu ul {
+    display: flex;
+    justify-content: center;    
+}
+.header-menu ul li {
+    margin-right: 40px;
+    position: relative;
+}
+.header-menu li .fa {
+	font-size: 24px;
+	line-height: 1;
+	display: block;
+	text-align: center;
+}
+.header-menu ul li:last-child {
+    margin-right: 0;
+}
+.header-menu ul a {
+    font-size: 18px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 5px 0 5px;
+    position: relative;
+    display: block;
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+}
+.header-menu ul a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+}
+.header-menu ul a:hover::after {
+    width: 100%;
+}
+.header-menu .sub-menu {
+    background: #df3564;
+    min-width: 230px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: none;
+    padding: 0;
+    z-index: 100;
+}
+.header-menu .sub-menu li {
+    margin-right: 0;
+    padding: 0;
+    margin-bottom: 7px;
+}
+.header-menu .sub-menu a {
+    padding: 5px 10px;
+    color: #fff;
+}
+.header-menu .sub-menu a::after {
+    content: none;
+}
+@media (min-width: 991px) {
+	.header-menu ul li:hover .sub-menu {
+	    display: block;
+	}
+}
+.header-menu .sub-menu li a {
+    font-size: 14px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #fff;
+}
+.header-menu .sub-menu li:last-child a {
+    border-bottom: none;
+}
+
+
+/*----------------------------------------- Modal CSS Start -----------------------------------------*/
+.modal-box {
+   position: fixed;
+   background: rgba(255, 255, 255);
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 999;
+   display: none;
+}
+.modal-box .modal-header {
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-box .modal-header h2 {
+    margin-bottom: 0
+}
+.modal-box .modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+}
+.search-modal .product-cats {
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.search-modal .product-cats label,
+.accounts-modal .nav-tabs .nav-link {
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    padding-right: 30px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+}
+.search-modal .product-cats label:last-child {
+    padding-right: 0;
+}
+.search-modal .product-cats input {
+    display: none;
+}
+.search-modal .product-cats label span {
+    position: relative;
+    padding-bottom: 4px;
+}
+.search-modal .product-cats label span:after,
+.accounts-modal .nav-tabs .nav-link:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.search-modal .product-cats input:checked+span:after,
+.search-modal .product-cats label:hover span:after,
+.accounts-modal .nav-tabs .nav-link:hover:after,
+.accounts-modal .nav-tabs .nav-link.active:after {
+    width: 100%;
+}
+.search-modal .form-group {
+    display: flex;
+}
+.modal-box .form-control {
+    border: none;
+    border-bottom: 2px solid #888;
+    border-radius: 0;
+    height: auto;
+    font-size: 18px;
+    color: #000;
+}
+.modal-box .form-control::placeholder {
+    color: #888;
+}
+.modal-box .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #df3564;
+}
+.search-modal .search-submit {
+    background: #df3564;
+    width: 70px;
+    border: 1px solid #df3564;
+    line-height: 50px;
+    color: #fff;
+    font-size: 24px;
+}
+.search-modal .instance-search {
+    padding: 0 50px;
+}
+/*-- Search Modal CSS End --*/
+.accounts-tab {
+    max-width: 450px;
+    margin: 0 auto;
+}
+.accounts-modal .nav-tabs .nav-item {
+    padding: 0;
+    margin: 0;
+}
+.accounts-modal .nav-tabs .nav-link {
+    border: none;
+    position: relative;
+    padding: 0;
+    margin-right: 35px;
+}
+.accounts-modal .nav-tabs li:last-child .nav-link {
+    margin-right: 0;
+}
+.accounts-modal .nav-tabs {
+    border: none;
+    padding-bottom: 70px;
+    justify-content: center;
+}
+.accounts-modal  .form-control {
+    margin-bottom: 50px;
+    font-size: 14px;
+}
+.accounts-modal button {
+    background: #df3564;
+    padding: 20px 0;
+    border-radius: 0;
+    border: 1px solid #df3564;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+}
+.accounts-modal h3 {
+    font-family: 'Oswald', sans-serif;
+}
+.social-tab {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.social-tab a {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 39px;
+    background: #df3564;
+    display: block;
+    color: #fff;
+    text-align: center;
+}
+.social-tab li {
+    margin-right: 15px;
+}
+.social-tab li:last-child {
+    margin-right: 0;
+}
+/*----------------------------------------- Modal CSS End -----------------------------------------*/
+
+/*--- Header CSS End ---*/
+
+
+
+/*--- Profile Page CSS Start ---*/
+.profile-wrap {
+    background: #e8e8e8;
+    display: flex;
+}
+.profile-sidebar {
+    width: 350px;
+    padding: 122px 0 35px 0;
+    background: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-box-shadow: 2px 0px 3px 0px rgba(0,0,0,0.12);
+    -moz-box-shadow: 2px 0px 3px 0px rgba(0,0,0,0.12);
+    box-shadow: 2px 0px 3px 0px rgba(0,0,0,0.12);
+    transition: 0.4s all ease;
+}
+.admin-profile {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    margin-bottom: 30px;
+}
+.admin-profile a,
+.admin-profile span {
+    display: block;
+}
+.profile-wrap .profile-pic {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+}
+.profile-pic img {
+    width: 100%;
+}
+.profile-wrap .profile-name {
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    font-family: 'Oswald', sans-serif;
+}
+.profile-wrap .status {
+    font-size: 12px;
+    color: #777777;
+}
+
+.more-options a,
+.about-box a {
+    font-size: 16px;
+    color: #898989;
+    padding: 13px 15px 13px 25px;
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+.more-options .fa,
+.about-box a .fa  {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #df3564;
+}
+.more-options a:hover {
+    background: #df3564;
+    color: #fff;
+    border-color: #df3564;
+}
+.more-options .logOut a:hover {
+    background: transparent;
+    color: #df3564;
+}
+.more-options a:hover .fa {
+    color: #fff;
+}
+.more-options .logOut a .fa {
+    color: #df3564;
+}
+.more-options li:last-child a {
+    border-bottom: none;
+}
+
+.dashboard-main {
+    padding: 40px 30px 70px;
+    width: 100%;
+    margin-left: 390px;
+    transition: 0.4s all ease;
+}
+
+.dashboard-main .row {
+    max-width: 900px;
+}
+.profile-box {
+    background: #fff;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    padding: 45px 25px;
+}
+.member-profile {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.member-profile .bio {
+    width: 100%;
+}
+.member-profile .profile-pic {
+    margin: 0 auto 10px;
+    position: relative;
+}
+.upload-photo {
+    background-color: rgba(223, 53, 100, 0.9);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    font-size: 10px;
+    padding-top: 3px;
+    opacity: 0;
+    transition: 0.7s all ease;
+    text-align: center;
+    text-transform: uppercase;
+}
+.upload-photo .fa {
+    display: block;
+    font-size: 10px;
+}
+.profile-wrap .profile-pic:hover .upload-photo  {
+    opacity: 1;
+}
+.member-profile .bio span,
+.member-profile .bio a {
+    width: 100%;
+    display: block;
+}
+.social-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.social-login li {
+    margin: 0 4px;
+}
+.social-login a {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+}
+.social-login .fa-facebook {
+    background: #4e339c;
+}
+.social-login .fa-twitter {
+    background: #4b91f4;
+}
+.social-login .fa-google-plus {
+    background: #cf453a;
+}
+
+.about-box {
+    background: #fff;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+}
+.about-box .about-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    background: #ddd;
+}
+.about-box .about-head .fa {
+    padding-right: 10px;
+}
+.about-box .about-head span {
+    font-size: 15px;
+    font-weight: 600;
+}
+.about-box a:hover {
+    color: #df3564;
+}
+.about-box  .about-head .profile-complete {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: #fff;
+    background: #df3564;
+    font-size: 12px;
+    display: block;
+    font-weight: 400;
+}
+
+.edit-box {
+    background: #fff;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.15);
+}
+.edit-box .edit-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 20px;
+    background-color: #ddd;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.edit-box input[type=number],
+.edit-box input[type=number]::-webkit-inner-spin-button, 
+.edit-box input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+}
+
+.edit-box form {
+    padding: 15px 20px;
+}
+.edit-box label {
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+}
+.edit-box form .form-control {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    display: block;
+    height: auto;
+    padding: 10px 15px;
+}
+.edit-box form .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: #df3564;
+}
+.edit-box form .btn-danger {
+
+}
+
+
+/* Nav Toggle CSS Start */
+body.openSidebar .more-options a span {
+	display: none;
+}
+body.openSidebar .dashboard-main {
+	margin-left: 90px;
+}
+body.openSidebar .profile-sidebar {
+	left: 0px;
+	width: 70px;
+}
+.profileToggle {
+	position: absolute;
+    right: -33px;
+    background: #ffff;
+    padding: 5px 10px;
+    color: #df3564;
+    cursor: pointer;
+}
+body.openSidebar .admin-profile {
+	display: none;
+}
+/* Nav Toggle CSS End */
+
+
+
+/*---  Team Bar CSS Start  ---*/
+/*--- Team Bar CSS Start ---*/
+.team-bar {
+    position: fixed;
+    top: 100px;
+    float: right;
+    right: 0;
+    max-width: 396px;
+    width: 100%;
+    overflow: auto;
+    background: #fafafa;
+    height: 100vh;
+    z-index: 150;
+}
+.sidebar::-webkit-scrollbar,
+.team-list::-webkit-scrollbar,
+.chat-history::-webkit-scrollbar  {
+  width: 7px;
+  border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-track,
+.team-list::-webkit-scrollbar-track,
+.chat-history::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 0;
+}
+.sidebar::-webkit-scrollbar-thumb,
+.team-list::-webkit-scrollbar-thumb,
+.chat-history::-webkit-scrollbar-thumb {
+  background: #CFD2D9; 
+  border-radius: 3px;
+}
+
+.team-head {
+    position: fixed;
+    max-width: 396px;
+    width: 100%;
+    top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 30px 15px 30px;
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 4px -1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 3px 4px -1px rgba(0,0,0,0.15);
+    box-shadow: 0px 3px 4px -1px rgba(0,0,0,0.15);
+    z-index: 200;
+}
+
+
+.team-bar h4 {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #000000;
+}
+.team-drop.dropdown {
+    width: 80px;
+}
+.team-bar .dropdown-toggle {
+    display: inline-block;
+    width: 100%;
+}
+.team-bar .dropdown-toggle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 17px;
+    padding: 0 0 3px 0;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.2);
+    width: 100%;
+    max-width: 80px;
+}
+.team-bar .ds-input {
+    font-size: 18px;
+    line-height: 21px;
+    height: auto;
+    font-weight: 400;
+    color: #6A707E;
+    border: none;
+    border-radius: 0;
+    padding: 13px 10px 13px 10px;
+    margin-top: 20px;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.2);
+    background: url(../images/search-icon.png) 90% center no-repeat;
+}
+.team-bar .ds-input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+
+.team-list {
+    margin-top: 160px;
+    overflow: auto;
+    height: 800px;
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 800px;
+    width: 100%;
+}
+.team-list.show {
+    opacity: 1;
+    left: 0;
+}
+.team-bar .team-member {
+    padding: 25px 30px;
+    display: block;
+    width: 100%;
+    position: relative;
+    color: #464A53;
+}
+.team-bar .team-member:after {
+    content: '';
+    width: 54px;
+    height: 1px;
+    background: rgba(112, 112, 112, 0.2);
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+}
+.team-bar .team-member:hover {
+    background: rgba(0, 159, 227, 0.10);
+}
+.team-bar .member-img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    position: absolute;
+    left: 30px;
+    top: 17px;
+    border-radius: 50%;
+}
+.team-bar .member-img img {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.team-member span {
+    display: block;
+}
+.team-bar .member-name {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #464A53;
+    margin-bottom: 3px;
+    padding-left: 60px;
+}
+.team-bar .member-status {
+    font-size: 14px;
+    color: #464A53;
+    font-weight: 400;
+    line-height: 17px;
+    padding-left: 60px;
+}
+.team-bar .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4CAF50;
+    display: inline-block;
+    position: absolute;
+    left: 25px;
+    top: 10px;
+    padding: 0;
+}
+/*----  Team Bar CSS End  --*/
+
+/*--- Profile Page CSS End ---*/
+
+
+/*--- Content CSS End ---*/
+
+
+/*--- Responsive Start ---*/
+@media (max-width: 1800px) {
+	.profile-sidebar {
+    	width: 290px;
+    }
+    .dashboard-main {
+    	margin-left: 330px;
+    }
+}
+@media (max-width: 1600px) {
+	.more-options a span {
+		display: none;
+	}
+	.dashboard-main {
+		margin-left: 90px;
+	}
+	.admin-profile {
+		display: none;
+	}
+	.profile-sidebar {
+		left: 0px;
+		width: 70px;
+		z-index: 50;
+	}
+
+	body.openLeftNav .admin-profile {
+		display: flex;
+	}
+	body.openLeftNav .more-options a span {
+		display: inline-block;
+	}
+	body.openLeftNav .profile-sidebar {
+		left: 0px;
+		width: 290px;
+	}
+	body.openLeftNav .dashboard-main {
+    	margin-left: 330px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .header-menu ul li {
+        margin-right: 25px;
+    }
+    .banner-wrap .banner {
+        background-position: 70% center !important;
+    }
+    .profile-wrap .profile-pic {
+    	width: 70px;
+    	height: 70px;
+    }
+}
+@media (max-width: 1199px) {
+    .header-menu ul a {
+    	font-size: 16px;
+    }
+    .header .btn-search {
+        margin-right: 7px;
+    }
+    .modal-box .modal-header {
+        padding: 25px 50px;
+    }
+    .banner-wrap .carousel-control-next {
+        top: 93%;
+        right: 43%;
+    }
+    .banner-wrap .carousel-control-prev {
+        top: 93%;
+        left: 43%;
+    }
+
+    body.openLeftNav .profile-sidebar {
+	    left: 0px;
+	    width: 230px;
+	}
+	body.openLeftNav .dashboard-main {
+	    margin-left: 250px;
+	}
+	.admin-profile {
+		padding: 0 15px;
+	}
+}
+
+@media (max-width: 991px) {
+    .header-fixed {
+    	padding: 15px 0;
+    }
+    .header-menu ul {
+        display: none;
+    }
+    .header-menu {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+    .header-menu .main-menu {
+        width: 100%;
+        background: rgba(223, 53, 100, 0.9);
+        padding: 0;
+        margin-top: 28px;
+        z-index: 999;
+        position: relative
+    }
+    .header-menu ul a::after {
+    	bottom: 0;
+    }
+    .header-menu ul li:hover {
+    	border-color: #000;
+    }
+    .header .account-btns {
+        padding-right: 70px;
+    }
+    .header .menu-col {
+        position: initial;
+    }
+    .menu-btn {
+        width: 30px;
+        height: 21px;
+        margin-left: auto;
+        margin-top: 32px;
+        margin-right: 15px;
+        z-index: 999;
+        position: relative
+    }
+    .header-menu ul li {
+    	margin-right: 0;
+    	border-bottom: 1px solid #fff;
+    }
+    .header-menu ul li:last-child {
+    	border-bottom: none;
+    }
+    .header-menu ul li a {
+        color: #fff;
+        width: 100%;
+        padding: 10px 15px;
+    }
+	.header-menu li .fa {
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 12px;
+	}
+	.header-menu li span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.header-menu .sub-menu {
+		background: #fff;
+		width: 100%;
+		max-width: 100%;
+	}
+	.header-menu .sub-menu li a {
+		color: #333;
+		border-bottom: 1px solid #333;
+	}
+
+    .logo {
+        position: relative;
+        z-index: 999;
+    }
+    
+    .search-modal .search-submit {
+        width: 60px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .search-modal .product-cats {
+        justify-content: flex-start;
+    }
+    .search-modal .product-cats label {
+        margin-bottom: 10px;
+    }
+
+    .menu-btn span {
+        width: 30px;
+        height: 3px;
+        background-color: #303030;
+        margin-bottom: 6px;
+        -webkit-transition: 0.5s all ease;
+        transition: 0.5s all ease;
+        display: block;
+    }
+    .menu-btn span:last-child {
+        margin-bottom: 0;
+    }
+    .change-btn span:nth-child(1) {
+        -webkit-transform: rotate(-50deg) translate(-5px, 8px);
+        transform: rotate(-50deg) translate(-5px, 8px);
+    }
+    .change-btn span:nth-child(2) {
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+    .change-btn span:nth-child(3) {
+        -webkit-transform: rotate(47deg) translate(-5px, -8px);
+        transform: rotate(47deg) translate(-5px, -8px);
+    }
+    /*-- Header CSS End --*/
+
+
+    body.openLeftNav .dashboard-main {
+    	margin-left: 90px;
+    }
+    .profile-box {
+    	padding: 25px 15px;
+    }
+    .more-options a, .about-box a {
+    	padding: 10px 15px;
+    	font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-box, 
+    .about-box {
+    	display: inline-block;
+    	width: 47%;
+    	vertical-align: top;
+    	margin-right: 20px;
+    }
+    .about-box {
+    	margin-right: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .logo img {
+        width: 170px;
+    }
+    .menu-btn {
+        margin-top: 27px;
+    }
+
+    .instance-search {
+        padding: 0;
+    }
+    .modal-box .modal-header {
+        padding: 20px 15px;
+    }
+    .search-modal .product-cats label {
+        font-size: 16px;
+    }
+    .modal-box .modal-header h2 {
+        font-size: 22px;
+    }
+    .close-modal img {
+        width: 80%;
+    }
+    .search-modal .product-cats {
+        padding-bottom: 30px;
+    }
+
+    .header .account-btns {
+        margin-left: -80px;
+    }
+}
+
+@media (max-width: 575px) {
+    .profile-box, 
+    .about-box {
+		display: block;
+		width: 100%;
+		margin-bottom: 25px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .change-btn span:nth-child(1) {
+        -webkit-transform: rotate(-50deg) translate(-2px, 5px);
+        transform: rotate(-50deg) translate(-2px, 5px);
+    }
+
+    .profile-sidebar {
+	    width: 50px;
+	    padding-top: 100px;
+	}
+	.dashboard-main {
+	    margin-left: 45px;
+	    padding: 40px 15px 70px 35px;
+	}
+	.profileToggle {
+	    position: absolute;
+	    right: -26px;
+	    background: #df3564;
+	    padding: 3px 7px;
+	    color: #fff;
+	    font-size: 14px;
+	}
+	.edit-box .edit-head {
+		padding: 10px 13px;
+	}
+	.edit-box form {
+	    padding: 15px 13px;
+	}
+	.edit-box form .form-control {
+		padding: 8px 10px;
+	}
+}
+/*--- Responsive End ---*/
