@@ -3,14 +3,8 @@ import './userInfo.css'
 
 
 class UserInfo extends Component {
-    state = {
-        edit: 'false'
-      }
-
-    handleEdit = e => {
-        this.setState({
-            edit: 'true'
-        });
+    constructor (props) {
+        super(props);
     }
 
     render() { 
@@ -55,10 +49,10 @@ class UserInfo extends Component {
                     <div className="col-md-9">
                         <div className="edit-box">
                             <div className="edit-head">
-                                <button className="btn-primary btn" onClick={(e) => this.handleEdit(e)}>Edit</button>
+                                <button className="btn-primary btn" onClick={(e) => this.props.handleEdit(e)}>Edit</button>
                                 <span className="Edit-icon"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                             </div>
-                            {this.state.edit === 'false'?
+                            {this.props.edit === 'false'?
                             <div className='userInfo'>
                                {this.props.user.map(user => 
                                 <ul className="list-group list-group-flush" key={user.id}>
@@ -74,62 +68,66 @@ class UserInfo extends Component {
                             </div>
                             :
                             <div>
-                                 {this.props.user.map(user => 
+                                <div className="form-group">
+                                    <label>Name</label>
+                                    <input type="text" className="form-control" name="name" onChange={(e) => this.props.handleChange(e)} value={this.props.name} placeholder="Name"/>
+                                </div>
+                                 {/* {this.props.data.map(user => 
                                     <form onSubmit={(e) => this.props.handleEdit(e, user)} key={user.id}>
                                         <legend>Personal Information</legend>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Name</label>
-                                            <input type="text" className="form-control" name="name" onChange={() => this.props.handleChange()} value={user.name} placeholder="Name"/>
+                                            <label>Name</label>
+                                            <input type="text" className="form-control" name="name" onChange={(e) => this.props.handleChange(e)} value={user.name} placeholder="Name"/>
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Username</label>
-                                            <input type="text" className="form-control" name='username' onChange={() => this.props.handleChange()} value={user.username} placeholder="Username"/>
+                                            <label>Username</label>
+                                            <input type="text" className="form-control" name='username' onChange={(e) => this.props.handleChange(e)} value={user.username} placeholder="Username"/>
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Phone Number</label>    
-                                            <input type="text" className="form-control" name="phoneNumber" onChange={() => this.props.handleChange()} value={user.phone} placeholder="Phone Number"/>
+                                            <label>Phone Number</label>    
+                                            <input type="text" className="form-control" name="phoneNumber" onChange={(e) => this.props.handleChange(e)} value={user.phone} placeholder="Phone Number"/>
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Email</label>
-                                            <input type="email" className="form-control" name="email" onChange={() => this.props.handleChange()} value={user.email} placeholder="Email"/>
+                                            <label>Email</label>
+                                            <input type="email" className="form-control" name="email" onChange={(e) => this.props.handleChange(e)} value={user.email} placeholder="Email"/>
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Website</label>
-                                            <input type="text" className="form-control" name="website" onChange={() => this.props.handleChange()} value={user.website} placeholder="Website"/>
+                                            <label>Website</label>
+                                            <input type="text" className="form-control" name="website" onChange={(e) => this.props.handleChange(e)} value={user.website} placeholder="Website"/>
                                         </div>
                                         <fieldset>
                                             <legend>Company Information</legend>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Company Name</label>
+                                                <label>Company Name</label>
                                                 <input type="text" className="form-control" name="company" onChange={() => this.props.handleChange()} value={user.company.name} placeholder="Company Name"/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Company Catch Phrase</label>
+                                                <label>Company Catch Phrase</label>
                                                 <input type="text" className="form-control" name="company" onChange={() => this.props.handleChange()} value={user.company.catchPhrase} placeholder="Company Catch Phrase"/>
                                             </div>
                                         </fieldset>
                                         <fieldset>
                                             <legend>Address</legend>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Street</label>
+                                                <label>Street</label>
                                                 <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.street} placeholder="Street"/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Suite</label>
+                                                <label>Suite</label>
                                                 <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.suite} placeholder="Suite"/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">City</label>
+                                                <label>City</label>
                                                 <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.city} placeholder="City"/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">zip code</label>
+                                                <label>zip code</label>
                                                 <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.zipcode} placeholder="zip code"/>
                                             </div>
                                         </fieldset>
                                         <button type="submit" className="btn btn-primary">Update</button>
                                     </form>
-                                )}
+                                )} */}
 
                             </div>
                             }

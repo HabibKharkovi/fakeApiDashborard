@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios'
 import Header from './components/header'
 import LeftSideBar from './components/leftSidebar';
 import UserInfo from './components/content/userInfo';
@@ -27,38 +28,25 @@ class Dashboard extends Component {
     albumPhotos: [],
     user: [],
     userPosts: [],
-    fiterMember: [],
-    name: '',
-    email: '',
-    username: '',
-    website: '',
+    searchQuery: '',
+    data: [],
+    name: 'asdf asdf',
+    edit: 'false'
    }
 
-  componentDidMount(){
+  async componentDidMount(){
+    console.log("xxx")
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(posts => this.setState({ posts }))
+    const {data: posts} = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    const {data: comments} = await axios.get('https://jsonplaceholder.typicode.com/comments');
+    const {data: allAlbums} = await axios.get('https://jsonplaceholder.typicode.com/albums');
+    const {data: allPhotos} = await axios.get('https://jsonplaceholder.typicode.com/photos');
+    const {data: allTodos} = await axios.get('https://jsonplaceholder.typicode.com/todos');
+    const {data: users} = await axios.get('https://jsonplaceholder.typicode.com/users');
 
-    fetch('https://jsonplaceholder.typicode.com/comments')
-    .then(response => response.json())
-    .then(comments => this.setState({ comments }))
-
-    fetch('https://jsonplaceholder.typicode.com/albums')
-    .then(response => response.json())
-    .then(allAlbums => this.setState({ allAlbums }))
-
-    fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(response => response.json())
-    .then(allPhotos => this.setState({ allPhotos }))
-
-    fetch('https://jsonplaceholder.typicode.com/todos')
-    .then(response => response.json())
-    .then(allTodos => this.setState({ allTodos }))
-
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(users => this.setState({ users }))
+    this.setState({
+      posts, comments, allAlbums, allPhotos, allTodos, users
+    });
 
   }
 
@@ -81,35 +69,41 @@ class Dashboard extends Component {
      this.setState({ albumPhotos })
   }
 
-  searchMemeber = e => {
-    console.log(e.target.value )
+  handleChange = (e) => {
+    // const data = { ...this.state.data };
+    // data[input.name] = input.value;
+    e.preventDefault();
+
+    this.setState({
+      name: e.target.value
+    })
+    console.log(this.state.name)
   }
 
-  handleChange = e => {
+  handleEdit = e => {
+    const data = this.state.user;
     this.setState({
-      this.target.name: this.target.value
+        edit: 'true',
+        data
+    });
+  }
+
+  searchMemeber = e => {
+    this.setState({
+      searchQuery: e.target.value
     })
   }
 
-  handleEdit = (e, user) => {
-    e.preventDefault();
-    console.log(user.id);
-  }
-
-  // searchMemeber = e => {
-  //   this.setState({
-  //     fiterMember: e.target.value
-  //   }, () => {
-  //     if (this.state.fiterMember && this.state.fiterMember.length > 1) {
-  //       if (this.state.fiterMember.length % 2 === 0) {
-  //         this.getInfo()
-  //       }
-  //     } else if (!this.state.fiterMember) {
-  //     }
-  //   })
-  // }
-
   render() { 
+    let filtered = []
+    if(this.state.searchQuery){
+       filtered = this.state.users.filter(m =>
+        m.name.toLowerCase().startsWith(this.state.searchQuery.toLowerCase())
+      );
+    } else {
+      filtered = this.state.users
+    }
+
     return ( 
       <div className='wrapper'>
        <Header/>
@@ -118,13 +112,24 @@ class Dashboard extends Component {
             <LeftSideBar user={this.state.user}/>
             <Route exact path={"/"} component={() => <MainContent/>}/>
             <Route path={"/userinfo"} component={() => 
-            <UserInfo user={this.state.user} handleEdit={this.handleEdit} hangleChange={this.handleChange}/>}/>
+            <UserInfo 
+              edit={this.state.edit}
+              name={this.state.name}
+              user={this.state.user} 
+              data={this.state.data}
+              handleEdit={this.handleEdit} 
+              handleChange={this.handleChange}/>
+            }/>
             <Route path={"/posts"} component={() => <Posts posts={this.state.userPosts} handleSinglePost={this.handleSinglePost}/>}/>
             <Route path={"/albums"} component={() => <Albums albums={this.state.userAlbums} handleAlbumPhotos={this.handleAlbumPhotos}/>}/>
             <Route path={"/album"} component={() => <Album albumPhotos={this.state.albumPhotos} />}/>
             <Route path={"/post"} component={() => <Post post={this.state.singlePost} comments={this.state.singlePostComments}/>}/>
             <Route path={"/todos"} component={() => <Todo todos={this.state.userTodos} />}/>
-            <RightSideBar users={this.state.users} handleUsers={this.handleUser} searchMemeber={this.searchMemeber}/>
+            <RightSideBar 
+              users={filtered} 
+              handleUsers={this.handleUser} 
+              searchMemeber={this.searchMemeber}
+            />
           </div>
        </div>
     </div>
