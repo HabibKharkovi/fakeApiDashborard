@@ -31,7 +31,6 @@ class LeftSideBar extends Component {
                         <li><Link to='/posts'><i className="fa fa-cogs" aria-hidden="true"></i><span>Posts</span></Link></li>
                         <li><Link to='/albums'><i className="fa fa-envelope-o" aria-hidden="true"></i><span>Albums</span></Link></li>
                         <li><Link to='/todos'><i className="fa fa-wrench" aria-hidden="true"></i><span>Todos</span></Link></li>
-                        <li><Link to='/post'><i className="fa fa-wrench" aria-hidden="true"></i><span>Comments</span></Link></li>
 
                         {/* <li className="logOut"><a href="#"><i className="fa fa-sign-out" aria-hidden="true"></i><span>Log Out</span></a></li> */}
                     </ul>

@@ -3,7 +3,16 @@ import './userInfo.css'
 
 
 class UserInfo extends Component {
-    state = {  }
+    state = {
+        edit: 'false'
+      }
+
+    handleEdit = e => {
+        this.setState({
+            edit: 'true'
+        });
+    }
+
     render() { 
         return ( 
             <div className="dashboard-main">
@@ -31,7 +40,7 @@ class UserInfo extends Component {
                                 <li><a href="#" className="fa fa-google-plus"></a></li>
                             </ul>
                         </div> 
-                        <div className="about-box">
+                        {/* <div className="about-box">
                             <div className="about-head">
                                 <span><i className="fa fa-user" aria-hidden="true"></i>About</span>
                                 <span className="profile-complete">77%</span>
@@ -41,14 +50,15 @@ class UserInfo extends Component {
                                 <li><a href="#"><i className="fa fa-lock" aria-hidden="true"></i><span>Change Password</span></a></li>
                                 <li><a href="#"><i className="fa fa-pencil" aria-hidden="true"></i><span>Edit</span></a></li>
                             </ul>
-                        </div> 
+                        </div>  */}
                     </div>
                     <div className="col-md-9">
                         <div className="edit-box">
                             <div className="edit-head">
-                                <span>Edit</span>
+                                <button className="btn-primary btn" onClick={(e) => this.handleEdit(e)}>Edit</button>
                                 <span className="Edit-icon"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                             </div>
+                            {this.state.edit === 'false'?
                             <div className='userInfo'>
                                {this.props.user.map(user => 
                                 <ul className="list-group list-group-flush" key={user.id}>
@@ -62,6 +72,67 @@ class UserInfo extends Component {
                                 </ul>
                                 )}
                             </div>
+                            :
+                            <div>
+                                 {this.props.user.map(user => 
+                                    <form onSubmit={(e) => this.props.handleEdit(e, user)} key={user.id}>
+                                        <legend>Personal Information</legend>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Name</label>
+                                            <input type="text" className="form-control" name="name" onChange={() => this.props.handleChange()} value={user.name} placeholder="Name"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Username</label>
+                                            <input type="text" className="form-control" name='username' onChange={() => this.props.handleChange()} value={user.username} placeholder="Username"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Phone Number</label>    
+                                            <input type="text" className="form-control" name="phoneNumber" onChange={() => this.props.handleChange()} value={user.phone} placeholder="Phone Number"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Email</label>
+                                            <input type="email" className="form-control" name="email" onChange={() => this.props.handleChange()} value={user.email} placeholder="Email"/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Website</label>
+                                            <input type="text" className="form-control" name="website" onChange={() => this.props.handleChange()} value={user.website} placeholder="Website"/>
+                                        </div>
+                                        <fieldset>
+                                            <legend>Company Information</legend>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">Company Name</label>
+                                                <input type="text" className="form-control" name="company" onChange={() => this.props.handleChange()} value={user.company.name} placeholder="Company Name"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">Company Catch Phrase</label>
+                                                <input type="text" className="form-control" name="company" onChange={() => this.props.handleChange()} value={user.company.catchPhrase} placeholder="Company Catch Phrase"/>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Address</legend>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">Street</label>
+                                                <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.street} placeholder="Street"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">Suite</label>
+                                                <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.suite} placeholder="Suite"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">City</label>
+                                                <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.city} placeholder="City"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label htmlFor="exampleInputEmail1">zip code</label>
+                                                <input type="text" className="form-control" onChange={() => this.props.handleChange()} value={user.address.zipcode} placeholder="zip code"/>
+                                            </div>
+                                        </fieldset>
+                                        <button type="submit" className="btn btn-primary">Update</button>
+                                    </form>
+                                )}
+
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>
