@@ -30,8 +30,7 @@ class Dashboard extends Component {
     userPosts: [],
     searchQuery: '',
     data: [],
-    name: 'asdf asdf',
-    edit: 'false'
+    edit: false
    }
 
   async componentDidMount(){
@@ -69,23 +68,40 @@ class Dashboard extends Component {
      this.setState({ albumPhotos })
   }
 
-  handleChange = (e) => {
-    // const data = { ...this.state.data };
-    // data[input.name] = input.value;
-    e.preventDefault();
+  // handleChange = (e) => {
+  //   // const data = { ...this.state.data };
+  //   // data[input.name] = input.value;
+  //   e.preventDefault();
 
-    this.setState({
-      name: e.target.value
-    })
-    console.log(this.state.name)
-  }
+  //   this.setState({
+  //     name: e.target.value
+  //   })
+  //   console.log(this.state.name)
+  // }
 
   handleEdit = e => {
     const data = this.state.user;
     this.setState({
-        edit: 'true',
+        edit: !this.state.edit,
         data
     });
+  }
+
+  handleSubmit = (e, data) => {
+    e.preventDefault();
+    fetch(`https://jsonplaceholder.typicode.com/posts/${data.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      data
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(response => response.json())
+  this.setState({
+    edit: !this.state.edit,
+ })
   }
 
   searchMemeber = e => {
@@ -118,7 +134,9 @@ class Dashboard extends Component {
               user={this.state.user} 
               data={this.state.data}
               handleEdit={this.handleEdit} 
-              handleChange={this.handleChange}/>
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              />
             }/>
             <Route path={"/posts"} component={() => <Posts posts={this.state.userPosts} handleSinglePost={this.handleSinglePost}/>}/>
             <Route path={"/albums"} component={() => <Albums albums={this.state.userAlbums} handleAlbumPhotos={this.handleAlbumPhotos}/>}/>
